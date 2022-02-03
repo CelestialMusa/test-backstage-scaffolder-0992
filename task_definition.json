@@ -1,0 +1,76 @@
+{
+    "taskDefinition": {
+        "taskDefinitionArn": "arn:aws:ecs:af-south-1:558260051993:task-definition/uat-kudos-softeng-web:1",
+        "containerDefinitions": [
+            {
+                "name": "uat-kudos-softeng-web-container",
+                "image": "artifacts.bcp.absa.co.za/architecture-and-engineering-docker-local/kudos-web:latest",
+                "repositoryCredentials": {
+                    "credentialsParameter": "arn:aws:secretsmanager:af-south-1:558260051993:secret:uat-jfrog-softeng-secret-fNn1L3"
+                },
+                "cpu": 0,
+                "portMappings": [
+                    {
+                        "containerPort": 80,
+                        "hostPort": 80,
+                        "protocol": "tcp"
+                    }
+                ],
+                "essential": true,
+                "environment": [],
+                "mountPoints": [],
+                "volumesFrom": [],
+                "logConfiguration": {
+                    "logDriver": "awslogs",
+                    "options": {
+                        "awslogs-group": "/ecs/uat-kudos-softeng-web",
+                        "awslogs-region": "af-south-1",
+                        "awslogs-stream-prefix": "ecs"
+                    }
+                }
+            }
+        ],
+        "family": "uat-kudos-softeng-web",
+        "taskRoleArn": "arn:aws:iam::558260051993:role/uat-fda-softeng-execution-role",
+        "executionRoleArn": "arn:aws:iam::558260051993:role/uat-fda-softeng-execution-role",
+        "networkMode": "awsvpc",
+        "revision": 1,
+        "volumes": [],
+        "status": "ACTIVE",
+        "requiresAttributes": [
+            {
+                "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+            },
+            {
+                "name": "ecs.capability.execution-role-awslogs"
+            },
+            {
+                "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+            },
+            {
+                "name": "ecs.capability.private-registry-authentication.secretsmanager"
+            },
+            {
+                "name": "com.amazonaws.ecs.capability.task-iam-role"
+            },
+            {
+                "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+            },
+            {
+                "name": "ecs.capability.task-eni"
+            }
+        ],
+        "placementConstraints": [],
+        "compatibilities": [
+            "EC2",
+            "FARGATE"
+        ],
+        "requiresCompatibilities": [
+            "FARGATE"
+        ],
+        "cpu": "512",
+        "memory": "1024",
+        "registeredAt": "2021-11-16T15:01:41.809000+00:00",
+        "registeredBy": "arn:aws:sts::558260051993:assumed-role/adfs-ftengdev-dev-softeng-app-dev/ABZM583@corp.dsarena.com"
+    }
+}
